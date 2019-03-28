@@ -1,0 +1,369 @@
+class priorityQueueTest
+{
+
+	define function priorityQueue()
+	{
+		array values = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+		array ranks = [100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100]
+		size = 0
+		
+		define function enqueue(v, r)
+		{
+			if (size = 0)
+			{
+				set values$0 = v
+				set ranks$0 = r
+				size = size + 1
+				x = values@0
+				
+				return x
+			}
+			else
+			{
+				i = 0
+				j = 1
+				x = values@i
+				y = ranks@i
+				while (y < r)
+				{
+					i = i + 1
+					x = values@i
+					y = ranks@i
+					j = j + 1
+				}
+				
+				set values$i = v
+				set ranks$i = r
+				z0 = x
+				z1 = y
+				while (z0 ! 0)
+				{
+					tmp1 = values@j
+					tmp2 = ranks@j
+					set values$j = x
+					set ranks$j = y
+					j = j + 1
+					x = tmp1
+					y = tmp2
+					z0 = values@j
+					z1 = ranks@j
+				}
+				
+				set values$j = x
+				set ranks$j = y
+				size = size + 1
+				x = values@i
+				return x
+			}
+		}
+		
+		define function deque()
+		{
+			if (size ! 0)
+			{
+				x = values@0
+				i = 0
+				j = 1
+				while (i < 19)
+				{
+					y = values@j
+					z = ranks@j
+					set values$i = y
+					set ranks$i = z
+					i = i + 1
+					j = j + 1
+				}
+				set values$19 = 0
+				set ranks$19 = 100
+				size = size - 1
+				return x
+			}
+			else
+			{
+				return "Queue is empty"
+			}
+		}
+		
+		define function isEmpty()
+		{
+			if (size = 0)
+			{
+				return 1
+			}
+			else
+			{
+				return 0
+			}
+		}
+		
+		define function peekRank()
+		{
+			r = ranks@0
+			return r
+		}
+		define function peekItem()
+		{
+			i = values@0
+			return v
+		}
+	}
+	
+	define function makeWire()
+	{
+		signalValue = 0
+		actionProcedures = 0
+		
+		define function setSignal(v)
+		{
+			signalValue = v
+		}
+		define function getSignal()
+		{
+			return signalValue
+		}
+	}
+	define function and3(in0, in1, in2)
+	{
+		o0 = in0.getSignal()
+		o1 = in1.getSignal()
+		o2 = in2.getSignal()
+		tmp0 = function makeWire()
+		
+		if (o0 = 1 & o1 = 1)
+		{
+			if (o2 = 1)
+			{
+				tmp0.setSignal(1)
+				return tmp0
+			}
+			else
+			{
+				tmp0.setSignal(0)
+				return tmp0
+			}
+		}
+		else
+		{
+			tmp0.setSignal(0)
+			return tmp0
+		}
+	}
+	define function or3(in0, in1, in2)
+	{
+		o0 = in0.getSignal()
+		o1 = in1.getSignal()
+		o2 = in2.getSignal()
+		tmp1 = function makeWire()
+		
+		if (o0 = 1)
+		{
+			tmp1.setSignal(1)
+			return tmp1
+		}
+		else
+		{
+			if (o1 = 1)
+			{
+				tmp1.setSignal(1)
+				return tmp1
+			}
+			else
+			{
+				if (o2 = 1)
+				{
+					tmp1.setSignal(1)
+					return tmp1
+				}
+				else
+				{
+					tmp1.setSignal(0)
+					return tmp1
+				}
+			}
+		}
+	}
+	define function or4(in0, in1, in2, in3)
+	{
+		o0 = in0.getSignal()
+		o1 = in1.getSignal()
+		o2 = in2.getSignal()
+		o3 = in3.getSignal()
+		tmp2 = function makeWire()
+		
+		if (o0 = 1)
+		{
+			tmp2.setSignal(1)
+			return tmp2
+		}
+		else
+		{
+			if (o1 = 1)
+			{
+				tmp2.setSignal(1)
+				return tmp2
+			}
+			else
+			{
+				if (o2 = 1)
+				{
+					tmp2.setSignal(1)
+					return tmp2
+				}
+				else
+				{
+					if (o3 = 1)
+					{
+						tmp2.setSignal(1)
+						return tmp2
+					}
+					else
+					{
+						tmp2.setSignal(0)
+						return tmp2
+					}
+				}
+			}
+		}
+	}
+	define function not(in0)
+	{
+		in = in0.getSignal()
+		tmp3 = function makeWire()
+		
+		if (in = 1)
+		{
+			tmp3.setSignal(0)
+			return tmp3
+		}
+		else
+		{
+			tmp3.setSignal(1)
+			return tmp3
+		}
+	}
+	
+	define function sim()
+	{
+		time = 0
+		events = function priorityQueue()
+		
+		define function add(event, delay)
+		{
+			t = time + delay
+			events.enqueue(event, t)
+		}
+		define function run()
+		{
+			empty = events.isEmpty()
+			if (empty ! 1)
+			{
+				tmp0 = events.peekRank()
+				time = tmp0
+				result = events.deque()
+				r = result.getSignal()
+				return r
+			}
+		}
+	}
+	
+	define function and3Gate(in0, in1, in2)
+	{
+		delay = 3
+		
+		result = function and3(in0, in1, in2)
+		s.add(result, delay)
+	}
+	define function or3Gate(in0, in1, in2)
+	{
+		delay = 5
+			
+		result = function or3(in0, in1, in2)
+		s.add(result, delay)
+	}
+	define function or4Gate(in0, in1, in2, in3)
+	{
+		delay = 5
+		
+		result = function or4(in0, in1, in2, in3)
+		s.add(result, delay)
+	}
+	define function notGate(in0)
+	{
+		delay = 2
+		
+		result = function not(in0)
+		s.add(result, delay)
+	}
+	
+	s = function sim()
+	a = function makeWire()
+	a.setSignal(0)
+	b = function makeWire()
+	b.setSignal(1)
+	c = function makeWire()
+	c.setSignal(0)
+	
+	a0 = function makeWire()
+	b0 = function makeWire()
+	c0 = function makeWire()
+	i0 = function makeWire()
+	i1 = function makeWire()
+	i2 = function makeWire()
+	i3 = function makeWire()
+	i4 = function makeWire()
+	i5 = function makeWire()
+	i6 = function makeWire()
+	s0 = function makeWire()
+	c0 = function makeWire()
+	one = function makeWire()
+	one.setSignal(1)
+	
+	function notGate(a)
+	a1 = s.run() #should be 1#
+	a0.setSignal(a1)
+	a2 = a0.getSignal()
+	function notGate(b)
+	b1 = s.run() #should be 0#
+	b0.setSignal(b1)
+	function notGate(c)
+	c1 = s.run() #should be 1#
+	c0.setSignal(c1)
+
+	function and3Gate(a0, b, c0)
+	i = s.run()
+	i0.setSignal(i)
+	function and3Gate(a0, b0, c)
+	i = s.run()
+	i1.setSignal(i)
+	function and3Gate(a, b, c)
+	i = s.run()
+	i2.setSignal(i)
+	function and3Gate(a, b0, c0)
+	i = s.run()
+	i3.setSignal(i)
+	function or4Gate(i0, i1, i2, i3)
+	i = s.run()
+	s0.setSignal(i)
+
+	#getting the cout value#
+	function and3Gate(a, b, one)
+	i = s.run()
+	i4.setSignal(i)
+	function and3Gate(b, c, one)
+	i = s.run()
+	i5.setSignal(i)
+	function and3Gate(a, c, one)
+	i = s.run()
+	i6.setSignal(i)
+
+	function or3Gate(i4, i5, i6)
+	i = s.run()
+	c0.setSignal(i)
+	
+	sum = s0.getSignal()
+	cout = c0.getSignal()
+	
+	print("sum is") println(sum)
+	print("cout is") println(cout)
+	
+}

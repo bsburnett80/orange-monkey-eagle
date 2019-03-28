@@ -1,0 +1,24 @@
+class conditionalsTest
+{
+
+#test for conditionals#
+
+define function foo()
+{
+	value = 0
+}
+	i = function foo()
+	z = i.value
+	x = 0
+	while (z < 10 | x = 0)
+	{
+		z = z + 1
+		if (z = 4)
+		{
+			x = 1
+		}
+	}
+	print("x =") println(x)
+	print("z =") println(z)
+
+}

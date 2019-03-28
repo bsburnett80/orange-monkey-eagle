@@ -1,0 +1,52 @@
+class fibonacci
+{
+#this is to test a fibonacci sequence to test recursion#
+
+	define function fib(n)
+	{
+		if (n < 2)
+		{
+			return n
+		}
+		else
+		{
+			n0 = n - 1
+			n1 = n - 2
+			y0 = function fib(n0)
+			y1 = function fib(n1)
+			y = y0 + y1
+			return y
+		}
+	}
+	
+	fibRecur = function fib(12)
+	print("Recursive fib value =")println(fibRecur)println("should be 144")
+	
+#this fib is to test iteration#
+	
+	define function fibIter(n)
+	{
+		if (n < 2)
+		{
+			return n
+		}
+		else
+		{
+			fibPrev = 1
+			fib = 1
+			i = 2
+			while (i < n)
+			{
+				temp = fib
+				fib = fib + fibPrev
+				fibPrev = temp
+				n = n - 1
+			}
+			
+			return fib
+		}
+	}
+	
+	fibIt = function fibIter(12)
+	print("Iterative fib value =")println(fibIt)println("should be 144")
+}

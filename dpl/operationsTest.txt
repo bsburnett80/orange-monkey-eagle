@@ -1,0 +1,74 @@
+class operationsTest
+{
+#test for operations#
+
+	define function math()
+	{
+		global = 10
+		define function add(a, b)
+		{
+			y = a + b
+			return y
+		}
+		define function mult(a, b)
+		{
+			y = a * b
+			return y
+		}
+        define function div(a, b)
+        {
+            y = a / b
+            return y
+        }
+        define function sub(a, b)
+        {
+            y = a - b
+            return y
+        }
+        define function mod(a, b)
+        {
+            y = a % b
+            return y
+        }
+        define function exp(a, b)
+        {
+        	y = a ^ b
+        	return y
+        }
+        define function inc(a, b)
+        {
+        	if (b ! 0)
+        	{
+        		a = a + 1
+        		b = b - 1
+        		y = function inc(a, b)
+        		return y
+        	}
+        	else
+        	{
+        		y = a
+        		return y
+        	}
+        }
+	}
+	
+	z = function math()
+	
+    x0 = z.add(10, 2)
+    x1 = z.sub(10, 2)
+    x2 = z.mult(10, 2)
+    x3 = z.div(10, 2)
+    x4 = z.mod(10, 3)
+    x5 = z.exp(3, 3)
+    x6 = z.inc(1, 4)
+    x7 = z.global
+    
+    print(x0)println("should be 12") #should be 12#
+    print(x1)println("should be 8") #should be 8#
+    print(x2)println("should be 20") #should be 20#
+    print(x3)println("should be 5.0") #should be 5 or 5.0#
+    print(x4)println("should be 1") #should be 1#
+    print(x5)println("should be 27") #should be 27#
+    print(x6)println("should be 5") #should be 5#
+    print(x7)println("should be 10") #should be 10#
+}

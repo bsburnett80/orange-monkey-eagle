@@ -1,0 +1,23 @@
+class factorialTest
+{
+#another test for recursion#
+
+	define function fact(n)
+	{
+		z = 1
+		if (n > 1)
+		{
+			n0 = n - 1
+			n1 = function fact(n0)
+			z = n * n1
+			return z
+		}
+		else
+		{
+			return z
+		}
+	}
+	
+	y = function fact(5)
+	print("fact(5) =")print(y)println("should be 120")
+}

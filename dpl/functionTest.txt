@@ -1,0 +1,32 @@
+class functionTest
+{
+#test for accessing function fields and methods#
+
+	define function node(ne)
+	{
+		next = ne
+		
+		define function getNext()
+		{
+			return next
+		}
+		define function setNext(n)
+		{
+			print("setting next to")println(n)
+			next = n
+		}
+	}
+	
+	z0 = function node("null")
+	v0 = z0.getNext()
+	
+	println(v0)
+	
+	n1 = "next"
+	
+	z0.setNext(n1)
+	v0 = z0.getNext()
+    	
+	print("v0 =")println(v0)
+	
+}
