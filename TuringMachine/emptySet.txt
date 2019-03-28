@@ -1,0 +1,17 @@
+Start
+A
+
+Final
+B
+
+Transitions
+A:_
+B:_;R,
+
+Number of tapes
+
+
+Input String
+
+
+END
