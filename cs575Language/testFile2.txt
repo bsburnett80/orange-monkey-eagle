@@ -1,0 +1,25 @@
+/* This
+	is
+	a
+	multi-line
+	comment.
+	
+
+class Object {
+	int a;
+	static int b;
+public:
+	int get_a( ) {return a;}
+	void put_a(int aa) {a=aa;}
+	static int get_b( ) {return b;}
+	static void put_b(int bb) {b=bb;}
+};*/
+
+int main( ) {
+	
+	while (w == 3)
+		i = i + 1;
+	do 
+		i = i + 1;
+	while (w == 3);
+}
